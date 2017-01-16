@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<script>
+var result = '', line, row;
+	for(row = 1; row <= 8; row++) {
+		for(line = 1; line <= 8; line++) {
+			if(row % 2 == 0) {
+				if(line % 2 == 0) {
+					result+= '#';
+				} else {
+					result+= ' ';
+				}
+			} else {
+				if(line % 2 == 0) {
+					result+= ' ';
+				} else {
+					result+= '#';
+				}
+			}
+		}
+        console.log(result);
+        result='';
+	}
+
+</script>
+</html>
