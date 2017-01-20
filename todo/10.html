@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8" />
+<title>TODO</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="prefetch stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
+
+<link rel="stylesheet prefetch" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700" />
+<link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+<style>
+
+</style>
+</head>
+
+<body>
+<p>Simple todo-"app". Try hover and drag todo items.</p>
+
+<div class="container">
+  <div class="add" id="add">
+    <i class="fa fa-plus"></i>
+  </div>
+  <div class="title">
+    <h1>Things to do</h1>
+  </div>
+
+  <div class="new-task" id="new_task">
+    <a class="add-new" href="#"  id="add_task">
+      <i class="fa fa-plus"></i>
+    </a>
+    <input id="todo_text" placeholder="New task">
+  </div>
+
+  <ul>
+    <li class="row">
+      <a class="remove" href="#">
+        <i class="fa fa-trash-o"></i>
+      </a>
+      <a class="completed" href="#">
+        <i class="fa fa-check"></i>
+      </a>
+      Go to the bank
+    </li>
+    <li class="row">
+        <a class="remove" href="#">
+          <i class="fa fa-trash-o"></i>
+        </a>
+        <a class="completed" href="#">
+          <i class="fa fa-check"></i>
+        </a>
+      Buy food
+    </li>
+    <li class="row">
+            <a class="remove" href="#">
+              <i class="fa fa-trash-o"></i>
+            </a>
+            <a class="completed" href="#">
+              <i class="fa fa-check"></i>
+            </a>
+      Clean the house
+    </li>
+    <li class="row">
+            <a class="remove" href="#">
+              <i class="fa fa-trash-o"></i>
+            </a>
+            <a class="completed" href="#">
+              <i class="fa fa-check"></i>
+            </a>
+      Make dinner
+    </li>
+    <li class="row">
+            <a class="remove" href="#">
+              <i class="fa fa-trash-o"></i>
+            </a>
+            <a class="completed" href="#">
+              <i class="fa fa-check"></i>
+            </a>
+      Pick up the kids
+    </li>
+</ul>
+</div>
+
+
+<script>
+
+var removeItem = function onclick(){
+    var containingEl = this.parentNode;
+    containingEl.parentNode.removeChild(containingEl);
+
+    return false;
+};
+var completedItem = function onclick(){
+    var containingEl = this.parentNode;
+    containingEl.setAttribute('class', 'complete');
+    return false;
+};
+
+
+var tasks = document.getElementsByClassName('row');
+for (var i=0; i<tasks.length; i++){
+    tasks[i].getElementsByClassName('remove')[0].onclick=removeItem;
+    tasks[i].getElementsByClassName('completed')[0].onclick=completedItem;
+}
+
+document.getElementById('add').onclick = function(){
+    document.getElementById('new_task').classList.toggle('new-task-show');
+}
+add_task.onclick = function(){
+
+    var newEl = document.createElement('li');
+    var newText = document.createTextNode(todo_text.value);
+    newEl.appendChild(newText);
+    newEl.classList.add('row');
+
+    function newA(c1, c2){
+
+        var newA =  document.createElement('a');
+        newA.classList.add(c1);
+        newA.setAttribute('href', '#');
+        var newI = document.createElement('i');
+        newI.classList.add("fa", c2);
+        newA.appendChild(newI);
+
+        if (c1==='remove'){
+            newA.onclick = removeItem;
+        }
+        else {
+            newA.onclick = completedItem;
+        }
+        return newA;
+    }
+
+
+    newEl.appendChild(newA('remove', "fa-trash-o"));
+    newEl.appendChild(newA('completed', "fa-check"));
+
+    var position = document.getElementsByTagName('ul')[0];
+    position.appendChild(newEl);
+
+}
+
+</script>
+</body>
+</html>
