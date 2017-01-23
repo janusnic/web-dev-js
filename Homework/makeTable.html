@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+
+<style>
+
+input{width:50px}
+table {
+  border:1px solid black;
+  border-color:red;
+}
+</style>
+</head>
+<body>
+
+<table id="out">
+</table>
+
+<script>
+
+document.body.onload = makeTable;
+
+function makeTable() {
+    var tab = document.getElementById('out');
+    console.log(tab);
+
+    for (var r = 0; r < 6; r++) {
+        var dRow = tab.insertRow(-1);
+        for (var c = 0; c < 10; c++) {
+
+            var cell = dRow.insertCell(-1);
+            var newInput = document.createElement('input');
+            newInput.type = 'text';
+            newInput.className = 'css-class-name';
+            newInput.setAttribute('id', c);
+            if (c % 2) {
+                newInput.setAttribute('data-formula', r.toString() + c);
+                newInput.setAttribute('value', r.toString() + c);
+            } else {
+                newInput.setAttribute('value', r.toString() + c);
+            }
+            cell.appendChild(newInput);
+        }
+    }
+    }
+
+</script>
+</body>
+</html>
