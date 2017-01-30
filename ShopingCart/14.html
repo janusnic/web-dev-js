@@ -262,6 +262,7 @@
         <p class="go-to-cart"><a href="#">Go to cart page</a></p>
     </div> <!-- cd-cart -->
 
+<span class='Top'><i class='fa fa-chevron-up'></i></span>
 <!-- / Product Templates for Shop & Cart -->
 <script id="productTemplate" type="text/template">
   <figure class="product">
@@ -366,7 +367,7 @@ $(document).ready(function () {
     });
 
     $('.product').hover(function () {
-        
+
         $('.img-title').find('h5, article, button').stop().animate({
             opacity: '1',
             marginLeft: '230px'
@@ -399,6 +400,17 @@ $(document).ready(function () {
         ;
     };
     var accordion = new Accordion($('#mega_menu'), false);
+
+    $(window).scroll(function () {
+        if ($(this).scrollTop() >= 500) {
+            $('.Top').fadeIn();
+        } else {
+            $('.Top').fadeOut();
+        }
+    });
+    $('.Top').click(function () {
+        $('html,body').stop().animate({ scrollTop: 0 });
+    });
 
 });
 
