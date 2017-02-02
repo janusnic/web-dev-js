@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <title>Ajax</title>
+    <script src="../js/modernizr.js" type="text/javascript"></script>
+    <link rel="stylesheet prefetch" href="../css/reset.css">
+    <link rel="stylesheet prefetch" href="../css/demo.css">
+
+</head>
+
+<body>
+
+    <section class="action">
+      <div class="load center">
+        <p>Load It</p>
+        <div class="loader"></div>
+      </div>
+    </section>
+
+    <article class="content"></article>
+
+</body>
+
+<script src="../js/jquery.min.js"></script>
+
+<script>
+$(document).ready(function () {
+    function loadMe() {
+        $.getScript(
+          'example.js',
+           function () {
+            testAjax();  // выполняем загруженный JavaScript
+        });
+        $('.load').hide();
+    };
+
+    $('.action').on('click', '.load', function () {
+        $(this).find('p').html('');
+        $(this).addClass('bar');
+        setTimeout(loadMe, 3000);
+    });
+    $('.content').on('click', '.reset', function () {
+        $('.content').html('');
+        $('.load').removeClass('bar').find('p').html('Load It');
+        $('.load').fadeIn();
+    });
+});
+</script>
+
+</html>

@@ -220,7 +220,7 @@
                     <span class="img-title">
                     <h5>Image Title1 - lorem ipsum lorem ipsum lorem ipsum</h5>
                     <article>lorem ipsum ut magna pharera aliquet non sodales lorem ipsum belit. Donec sed odio rera magna pharera aliquet</article>
-                    <button>Add To Cart</button>
+                    <button id="b1">Add To Cart</button>
                 </span>
                   </figcaption><i><img src="images/cart.svg" /></i>
                   <a href="#"></a>
@@ -367,7 +367,6 @@ $(document).ready(function () {
     });
 
     $('.product').hover(function () {
-
         $('.img-title').find('h5, article, button').stop().animate({
             opacity: '1',
             marginLeft: '230px'
@@ -377,6 +376,8 @@ $(document).ready(function () {
             opacity: '0',
             marginLeft: '0px'
         }, 100);
+    }).on('click', function(){
+        console.log('Click');
     });
 
 

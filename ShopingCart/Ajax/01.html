@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <title>Ajax</title>
+    <script src="../js/modernizr.js" type="text/javascript"></script>
+    <link rel="stylesheet prefetch" href="../css/reset.css">
+    <link rel="stylesheet prefetch" href="../css/demo.css">
+
+</head>
+
+<body>
+
+    <section class="action">
+      <div class="load center">
+        <p>Load It</p>
+        <div class="loader"></div>
+      </div>
+    </section>
+
+    <article class="content"></article>
+
+</body>
+
+<script>
+window.onload = function () {
+    function loadMe() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'test.txt', true);
+        xhr.send();
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState != 4) return;
+            document.querySelector('.load').style.display = 'none';
+
+            if (xhr.status != 200) {
+              // обработать ошибку
+              console.log('Ошибка ' + xhr.status + ': ' + xhr.statusText);
+            } else {
+              // вывести результат
+              document.querySelector('.content').innerHTML=xhr.responseText;
+            }
+          };
+      };
+    document.querySelector('.action').addEventListener('click', function () {
+        setTimeout(loadMe, 1000);
+    });
+};
+
+</script>
+
+</html>
